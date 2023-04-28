@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shamo_app/app/models/product_model.dart';
 import 'package:shamo_app/theme.dart';
 
 import 'package:get/get.dart';
@@ -9,11 +10,11 @@ class ChatBubble extends StatelessWidget {
       {super.key,
       required this.msg,
       required this.isSender,
-      required this.hasProduct});
+      required this.product});
 
   final String msg;
   final bool isSender;
-  final bool hasProduct;
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context) {
@@ -49,11 +50,11 @@ class ChatBubble extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "COURT VISION 2.0 SHOES",
+                        product.name!,
                         style: primaryTextStyle.copyWith(fontSize: 14),
                       ),
                       Text(
-                        "\%67,33",
+                        "\%${product.price}",
                         style: priceTextStyle.copyWith(
                             fontSize: 14, fontWeight: medium),
                       ),
@@ -107,7 +108,7 @@ class ChatBubble extends StatelessWidget {
         crossAxisAlignment:
             isSender ? CrossAxisAlignment.end : CrossAxisAlignment.start,
         children: [
-          hasProduct ? productPreview() : SizedBox(),
+          product is UninitializedProductModel ? SizedBox() : productPreview(),
           Row(
               mainAxisAlignment:
                   isSender ? MainAxisAlignment.end : MainAxisAlignment.start,

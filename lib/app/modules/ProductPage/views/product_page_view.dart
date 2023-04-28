@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:shamo_app/app/models/product_model.dart';
 import 'package:shamo_app/app/providers/cart_provider.dart';
 import 'package:shamo_app/app/providers/wishlist_provider.dart';
+import 'package:shamo_app/app/routes/app_pages.dart';
 
 import '../controllers/product_page_controller.dart';
 import 'package:shamo_app/theme.dart';
@@ -361,7 +362,7 @@ class ProductPageView extends GetView<ProductPageController> {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      Navigator.pushNamed(context, "/detail-chat-page");
+                      Get.toNamed(Routes.DETAIL_CHAT_PAGE, arguments: product);
                     },
                     child: Container(
                       width: 54,

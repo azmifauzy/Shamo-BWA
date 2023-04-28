@@ -13,7 +13,15 @@ import 'package:shamo_app/app/providers/transaction_provider.dart';
 import 'app/routes/app_pages.dart';
 import 'package:shamo_app/app/controllers/page_index_controller.dart';
 
-void main() {
+// firebase
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(MyApp());
 }
 

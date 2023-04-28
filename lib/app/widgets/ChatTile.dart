@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:shamo_app/app/models/product_model.dart';
+import 'package:shamo_app/app/routes/app_pages.dart';
 import 'package:shamo_app/theme.dart';
 
 class ChatTile extends StatelessWidget {
@@ -12,7 +14,8 @@ class ChatTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, "/detail-chat-page");
+        Get.toNamed(Routes.DETAIL_CHAT_PAGE,
+            arguments: UninitializedProductModel());
       },
       child: Container(
         margin: EdgeInsets.only(top: 33),
